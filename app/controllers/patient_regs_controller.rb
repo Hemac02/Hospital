@@ -1,6 +1,5 @@
 class PatientRegsController < ApplicationController
   before_action :require_login
-  hbdhb
   def new
     Rails.logger.info "📄 Registration Form — Session ID: #{request.session_options[:id]}"
     @patient_reg = PatientReg.new
