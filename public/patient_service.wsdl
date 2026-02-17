@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions 
+  name="PatientService"
+  targetNamespace="http://example.com/patient"
+  xmlns:tns="http://example.com/patient"
+  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://example.com/patient">
+      <xsd:element name="create_patient">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="message" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+
+      <xsd:element name="create_patientResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="status" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+
+  <wsdl:message name="createPatientRequest">
+    <wsdl:part name="parameters" element="tns:create_patient"/>
+  </wsdl:message>
+
+  <wsdl:message name="createPatientResponse">
+    <wsdl:part name="parameters" element="tns:create_patientResponse"/>
+  </wsdl:message>
+
+  <wsdl:portType name="PatientPortType">
+    <wsdl:operation name="create_patient">
+      <wsdl:input message="tns:createPatientRequest"/>
+      <wsdl:output message="tns:createPatientResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+
+  <wsdl:binding name="PatientBinding" type="tns:PatientPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="create_patient">
+      <soap:operation soapAction="create_patient"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="PatientService">
+    <wsdl:port name="PatientPort" binding="tns:PatientBinding">
+      <soap:address location="http://localhost:3000/soap/create_patient"/>
+    </wsdl:port>
+  </wsdl:service>
+
+</wsdl:definitions>

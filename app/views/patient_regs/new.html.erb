@@ -1,0 +1,49 @@
+<h1 style="text-align:center;">Patient Registration Form</h1>
+
+<%= form_with(model: @patient_reg, local: true) do |f| %>
+  <div style="width:400px; margin:0 auto; background:#f9f9f9; padding:20px; border-radius:10px;">
+    <div>
+      <%= f.label :FirstName, "First Name" %><br>
+      <%= f.text_field :FirstName, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :MiddleName, "Middle Name" %><br>
+      <%= f.text_field :MiddleName %>
+    </div><br>
+
+    <div>
+      <%= f.label :LastName, "Last Name" %><br>
+      <%= f.text_field :LastName, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :Phone, "Phone Number" %><br>
+      <%= f.telephone_field :Phone, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :Email, "Email" %><br>
+      <%= f.email_field :Email, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :Address, "Address" %><br>
+      <%= f.text_area :Address, rows: 2, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :Health_issue, "Health Issue" %><br>
+      <%= f.select :Health_issue, ["Fever", "Cold", "Diabetes", "Heart Disease", "Eye Problem", "Other"], { prompt: "-- Select an Issue --" }, required: true %>
+    </div><br>
+
+    <div>
+      <%= f.label :Diagnosis, "Diagnosis" %><br>
+      <%= f.text_field :Diagnosis, required: true %>
+    </div><br>
+
+    <div style="text-align:center;">
+      <%= f.submit "Register", style:"background:#007bff; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;" %>
+    </div>
+  </div>
+<% end %>

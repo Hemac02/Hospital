@@ -1,0 +1,2 @@
+module PatientRegsHelper
+end

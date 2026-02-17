@@ -1,0 +1,27 @@
+<h2 style="text-align:center;">Login Page</h2>
+
+<% if flash[:alert] %>
+  <p style="color:red; text-align:center;"><%= flash[:alert] %></p>
+<% end %>
+
+<% if notice %>
+  <p style="color:green; text-align:center;"><%= notice %></p>
+<% end %>
+
+<div style="width:300px; margin:0 auto; background:#f9f9f9; padding:20px; border-radius:10px;">
+  <%= form_with url: login_path, local: true do |f| %>
+    <div>
+      <%= label_tag :username, "Username" %><br>
+      <%= text_field_tag :username, nil, required: true %>
+    </div>
+    <br>
+    <div>
+      <%= label_tag :password, "Password" %><br>
+      <%= password_field_tag :password, nil, required: true %>
+    </div>
+    <br>
+    <div style="text-align:center;">
+      <%= submit_tag "Login", style:"background:#007bff; color:white; padding:8px 15px; border:none; border-radius:5px; cursor:pointer;" %>
+    </div>
+  <% end %>
+</div>
