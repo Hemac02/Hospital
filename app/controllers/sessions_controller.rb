@@ -15,7 +15,8 @@ class SessionsController < ApplicationController
       render :new
     end
   end
-
+ 
+  hi
   def destroy
     Rails.logger.info "🔴 Logging out... Old Session ID: #{request.session_options[:id]}"
     reset_session   # clears session and regenerates new session ID
